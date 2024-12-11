@@ -9,19 +9,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Vector2 _movement;
 
+    [SerializeField]
     private Rigidbody _rb;
-    public Transform cameraTransform; // Assign your camera transform here
 
-    private void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
+    public Transform cameraTransform; // Assign your camera transform here
 
     public void OnMove(InputAction.CallbackContext context)
     {
         _movement = context.ReadValue<Vector2>();
     }
+
     private void FixedUpdate()
     {
         if (_rb != null && cameraTransform != null)
