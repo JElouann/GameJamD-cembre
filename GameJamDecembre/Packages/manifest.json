@@ -5,6 +5,7 @@
     "com.unity.inputsystem": "1.11.2",
     "com.unity.multiplayer.tools": "1.1.1",
     "com.unity.netcode.gameobjects": "1.11.0",
+    "com.unity.services.authentication": "3.4.0",
     "com.unity.services.vivox": "16.5.3",
     "com.unity.textmeshpro": "3.0.7",
     "com.unity.timeline": "1.7.6",
