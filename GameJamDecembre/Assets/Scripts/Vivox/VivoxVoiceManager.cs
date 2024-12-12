@@ -47,4 +47,9 @@ public class VivoxVoiceManager : MonoBehaviour
         }
     }
     #endregion
+
+    bool CheckManualCredentials()
+    {
+        return !(string.IsNullOrEmpty(_issuer) && string.IsNullOrEmpty(_domain) && string.IsNullOrEmpty(_server));
+    }
 }
