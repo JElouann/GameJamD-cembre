@@ -846,11 +846,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 5ed8a2ac-2fd6-4173-8947-6227b475496b
+  cloudProjectId: 02c419c5-5dab-41cd-b1f0-5f53a619b7d1
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: GameJamDecembre
-  organizationId: eiouann
+  projectName: GameJamDecembre (2)
+  organizationId: mateo44
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
