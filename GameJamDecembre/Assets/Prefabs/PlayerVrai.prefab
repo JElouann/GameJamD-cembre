@@ -151,7 +151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6351793902203286918
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1432,6 +1432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 276442996759282604}
+  _mainPanel: {fileID: 601359231026339795}
   _panel: {fileID: 8637463705266141611}
 --- !u!114 &238131750836902059
 MonoBehaviour:
