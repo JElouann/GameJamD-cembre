@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Rigidbody _rb;
 
-
     public NetworkVariable<bool> CanMove = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
     public Transform cameraTransform;
 
