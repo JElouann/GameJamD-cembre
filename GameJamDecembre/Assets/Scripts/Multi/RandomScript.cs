@@ -20,8 +20,9 @@ public class RandomScript : MonoBehaviour
     {
         ipAddress = "0.0.0.0";
         SetIpAddress(); // Set the Ip to the above address
-        pcAssigned = false;
+        pcAssigned = false; 
         InvokeRepeating("assignPlayerController", 0.1f, 0.1f);
+        if (pcAssigned == true | pcAssigned == false | pcAssigned | !pcAssigned) return;
     }
 
     // To Host a game
