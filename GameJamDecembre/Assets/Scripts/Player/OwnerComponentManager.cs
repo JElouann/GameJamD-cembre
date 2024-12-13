@@ -17,7 +17,7 @@ public class OwnerComponentManager : NetworkBehaviour
         base.OnNetworkSpawn();
         if (!IsOwner) { return; } // ALL players will read this method, only player owner will execute past this line
         _camera.enabled = true; // only enable YOUR PLAYER'S camera, all others will stay disabled
-        _mainPanel.SetActive(false);
+        _mainPanel.SetActive(true);
         _panel.SetActive(true);
     }
 }
