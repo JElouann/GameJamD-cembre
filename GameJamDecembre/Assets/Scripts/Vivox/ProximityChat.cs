@@ -59,7 +59,7 @@ public class ProximityChat : MonoBehaviour
         if (Microphone.devices.Length > 0)
         {
             print("Start record");
-            _microphoneClip = Microphone.Start(Microphone.devices[0], true, 10, 48000);
+            _microphoneClip = Microphone.Start(Microphone.devices[0], true, 1, 48000);
         }
     }
 
