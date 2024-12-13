@@ -55,17 +55,16 @@ public class VivoxPlayer : NetworkBehaviour
 
     public async void LoginToVivoxAsync()
     {
-        if (IsLocalPlayer)
-        {
-            _clientID = (int)GameObject.Find("NetworkManager").GetComponent<NetworkManager>().LocalClientId;
+        print("OK");
+        _clientID = (int)GameObject.Find("NetworkManager").GetComponent<NetworkManager>().LocalClientId;
 
-            LoginOptions options = new LoginOptions();
-            options.DisplayName = "Client" + _clientID;
-            options.EnableTTS = true;
-            await VivoxService.Instance.LoginAsync(options);
+        LoginOptions options = new LoginOptions();
+        options.DisplayName = "Client" + _clientID;
+        options.EnableTTS = true;
+        await VivoxService.Instance.LoginAsync(options);
 
-            join3DChannelAsync();
-        }
+        join3DChannelAsync();
+
     }
 
     public async void join3DChannelAsync()
