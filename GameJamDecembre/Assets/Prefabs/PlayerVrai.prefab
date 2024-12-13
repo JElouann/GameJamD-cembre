@@ -718,7 +718,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6667996474945964964
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1461,11 +1461,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae0fdc48e929fb47b7dfb2d5e9a0476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputFieldText: {fileID: 5253935965053538811}
+  _loiText: {fileID: 5253935965053538811}
   _newLaws: {fileID: 126179722465059845}
   _panelLaws: {fileID: 8637463705266141611}
-  _loiName:
-    m_InternalValue: Loi
 --- !u!114 &2216217096419258617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1837,7 +1835,7 @@ MonoBehaviour:
   m_CharacterValidation: 0
   m_RegexValue: 
   m_GlobalPointSize: 14
-  m_CharacterLimit: 0
+  m_CharacterLimit: 60
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []

@@ -1,11 +1,16 @@
+using System.Collections;
 using TMPro;
+using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
 
-public class InputLoi : NetworkBehaviour
+public class TestNetworkVariableSynchronization : NetworkBehaviour
 {
+    //[SerializeField]
+    private NetworkVariable<FixedString64Bytes> _valueLaws = new NetworkVariable<FixedString64Bytes>("test", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+
     [SerializeField]
-    private TextMeshProUGUI _inputFieldText;
+    private TextMeshProUGUI _loiText;
 
     [SerializeField]
     private TextMeshProUGUI _newLaws;
@@ -13,15 +18,12 @@ public class InputLoi : NetworkBehaviour
     [SerializeField]
     private GameObject _panelLaws;
 
-    [SerializeField]
-    private NetworkVariable<string> _loiName = new NetworkVariable<string>("Loi", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-
     public void SetLaws()
     {
         base.OnNetworkSpawn();
         if (!IsOwner) { return; } // ALL players will read this method, only player owner will execute past this line
-        _loiName.Value = _inputFieldText.ToString();
-        _newLaws.text = _loiName.ToString();
+        _valueLaws.Value = _loiText.text;
+        _newLaws.text = _valueLaws.Value.ToString();
         _panelLaws.SetActive(false);
     }
 }
