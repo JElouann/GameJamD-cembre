@@ -1,4 +1,3 @@
-using System.Collections;
 using TMPro;
 using Unity.Collections;
 using Unity.Netcode;
@@ -20,7 +19,6 @@ public class TestNetworkVariableSynchronization : NetworkBehaviour
 
     public void SetLaws()
     {
-        base.OnNetworkSpawn();
         if (!IsOwner) { return; } // ALL players will read this method, only player owner will execute past this line
         _valueLaws.Value = _loiText.text;
         _newLaws.text = _valueLaws.Value.ToString();
