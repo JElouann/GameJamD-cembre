@@ -1,5 +1,6 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
+using Unity.Netcode;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,7 +13,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Rigidbody _rb;
 
-    public Transform cameraTransform; // Assign your camera transform here
+
+    public NetworkVariable<bool> CanMove = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    public Transform cameraTransform;
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -21,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_rb != null && cameraTransform != null)
+        if ((_rb != null && cameraTransform != null) && CanMove.Value)
         {
             // Get the camera's forward and right directions
             Vector3 forward = cameraTransform.forward;
