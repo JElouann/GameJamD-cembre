@@ -26,6 +26,13 @@ public class InputLoi : NetworkBehaviour
     [SerializeField]
     public NetworkVariable<bool> _canTakeTablette = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+        if (!IsOwner) { return; }
+        _panelLaws.SetActive(true);
+    }
+
     public void SetLaws()
     {
         if (!IsOwner) { return; } // ALL players will read this method, only player owner will execute past this line
