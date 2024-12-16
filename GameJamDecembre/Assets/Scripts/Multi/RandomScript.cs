@@ -4,16 +4,20 @@ using Unity.Netcode.Transports.UTP;
 using TMPro;
 using System.Net;
 using System.Net.Sockets;
+using Unity.Networking.Transport;
 
 public class RandomScript : MonoBehaviour
 {
     private PlayerController pc;
     private bool pcAssigned;
 
+    [SerializeField] private GameObject _panel;
+    [SerializeField] private GameObject _camera;
+
     [SerializeField] TextMeshProUGUI ipAddressText;
     [SerializeField] TMP_InputField ip;
 
-    [SerializeField] string ipAddress;
+    [SerializeField] string ipAddress; //L'adresse de ton serveur
     [SerializeField] UnityTransport transport;
 
     void Start()
@@ -35,6 +39,10 @@ public class RandomScript : MonoBehaviour
     // To Join a game
     public void StartClient()
     {
+        //if (transport.ClientBindAndConnect()) { return; }
+        Debug.Log("Michelle rejoint la partie !");
+        _panel.SetActive(false);
+        _camera.SetActive(false);
         ipAddress = ip.text;
         SetIpAddress();
         NetworkManager.Singleton.StartClient();
