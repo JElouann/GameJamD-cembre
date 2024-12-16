@@ -1013,7 +1013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivity: 40
   _cam: {fileID: 3852893062168636226}
-  _lockX: 1
+  _lockX: 0
   _lockY: 0
   CanMoveCamera:
     m_InternalValue: 0
