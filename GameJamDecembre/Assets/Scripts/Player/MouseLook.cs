@@ -40,7 +40,7 @@ public class MouseLook : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Limite pour éviter de regarder "à l'envers"
         yRotation += mouseX;
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
+        playerBody.rotation = Quaternion.Euler(0, yRotation, 0f);
 
         //playerBody.Rotate(new Vector3(mouseX, mouseY, 0));
     }
