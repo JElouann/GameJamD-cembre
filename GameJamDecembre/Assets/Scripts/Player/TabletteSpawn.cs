@@ -28,19 +28,22 @@ public class TabletteSpawn : NetworkBehaviour
         if (!IsOwner) { return; } // ALL players will read this method, only player owner will execute past this line
         if (context.performed)
         {
-            if (!_panelOpen.Value && _inputLoiRef._canTakeTablette.Value)
+            if (_inputLoiRef._canTakeTablette.Value)
             {
-                _playerControl.CanMove.Value = false;
-                _playerMouseControl.CanMoveCamera.Value = false;
-                _panelOpen.Value = true;
-                _canvasTablette.SetActive(true);
-            }
-            else
-            {
-                _playerControl.CanMove.Value = true;
-                _playerMouseControl.CanMoveCamera.Value = true;
-                _panelOpen.Value = false;
-                _canvasTablette.SetActive(false);
+                if (!_panelOpen.Value)
+                {
+                    _playerControl.CanMove.Value = false;
+                    _playerMouseControl.CanMoveCamera.Value = false;
+                    _panelOpen.Value = true;
+                    _canvasTablette.SetActive(true);
+                }
+                else
+                {
+                    _playerControl.CanMove.Value = true;
+                    _playerMouseControl.CanMoveCamera.Value = true;
+                    _panelOpen.Value = false;
+                    _canvasTablette.SetActive(false);
+                }
             }
         }
     }

@@ -24,9 +24,6 @@ public class InputLoi : NetworkBehaviour
     private MouseLook _playerMouseControl;
 
     [SerializeField]
-    private MouseLook _cameraMouseControl;
-
-    [SerializeField]
     public NetworkVariable<bool> _canTakeTablette = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
     public void SetLaws()
@@ -34,7 +31,6 @@ public class InputLoi : NetworkBehaviour
         if (!IsOwner) { return; } // ALL players will read this method, only player owner will execute past this line
         _playerControl.CanMove.Value = true;
         _playerMouseControl.CanMoveCamera.Value = true;
-        _cameraMouseControl.CanMoveCamera.Value = true;
         _valueLaws.Value = _loiText.text;
         _newLaws.text = _valueLaws.Value.ToString();
         _panelLaws.SetActive(false);
