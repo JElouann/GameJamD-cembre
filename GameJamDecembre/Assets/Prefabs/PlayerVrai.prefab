@@ -677,19 +677,7 @@ MonoBehaviour:
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 550377180789470544}
-        m_TargetAssemblyTypeName: MouseLook, Assembly-CSharp
-        m_MethodName: OnMouseLookPerformed
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4553956813481715828}
+      - m_Target: {fileID: 6529045357356197352}
         m_TargetAssemblyTypeName: MouseLook, Assembly-CSharp
         m_MethodName: OnMouseLookPerformed
         m_Mode: 0
@@ -926,7 +914,6 @@ GameObject:
   - component: {fileID: 3852893062168636226}
   - component: {fileID: 5210554138915872400}
   - component: {fileID: 128237424632530627}
-  - component: {fileID: 550377180789470544}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -999,24 +986,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &550377180789470544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1195711180420670211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b45337d04f5a44f489546b1ca918ab16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sensitivity: 40
-  _cam: {fileID: 3852893062168636226}
-  _lockX: 0
-  _lockY: 0
-  CanMoveCamera:
-    m_InternalValue: 0
 --- !u!1 &1226618984488898296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,7 +1482,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5650342543430258571}
-  - component: {fileID: 4553956813481715828}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -1539,24 +1507,6 @@ Transform:
   - {fileID: 7724580961341677627}
   m_Father: {fileID: 710457864426110814}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4553956813481715828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3063013951943665707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b45337d04f5a44f489546b1ca918ab16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sensitivity: 40
-  _cam: {fileID: 5650342543430258571}
-  _lockX: 0
-  _lockY: 0
-  CanMoveCamera:
-    m_InternalValue: 0
 --- !u!1 &3216333764394008035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1894,6 +1844,8 @@ GameObject:
   - component: {fileID: 4433786063918967766}
   - component: {fileID: 1143362490721298883}
   - component: {fileID: 6229755430417156175}
+  - component: {fileID: 567519673896058599}
+  - component: {fileID: 6529045357356197352}
   m_Layer: 0
   m_Name: PlayerVrai
   m_TagString: Untagged
@@ -2040,8 +1992,7 @@ MonoBehaviour:
   _newLaws: {fileID: 126179722465059845}
   _panelLaws: {fileID: 8637463705266141611}
   _playerControl: {fileID: 238131750836902059}
-  _playerMouseControl: {fileID: 550377180789470544}
-  _cameraMouseControl: {fileID: 4553956813481715828}
+  _playerMouseControl: {fileID: 6529045357356197352}
   _canTakeTablette:
     m_InternalValue: 0
 --- !u!114 &2216217096419258617
@@ -2100,7 +2051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasTablette: {fileID: 5698486777656335333}
-  _playerMouseControl: {fileID: 0}
+  _playerMouseControl: {fileID: 6529045357356197352}
   _playerControl: {fileID: 238131750836902059}
   _inputLoiRef: {fileID: 6716374130770954639}
   _panelOpen:
@@ -2118,6 +2069,106 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 3352787456140336684}
+--- !u!114 &567519673896058599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3568251145842437014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c24426b0449ae154f8cb8ea7ef9a1f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nameToString:
+    m_InternalValue:
+      utf8LengthInBytes: 5
+      bytes:
+        offset0000:
+          byte0000: 85
+          byte0001: 110
+          byte0002: 100
+          byte0003: 101
+          byte0004: 102
+          byte0005: 0
+          byte0006: 0
+          byte0007: 0
+          byte0008: 0
+          byte0009: 0
+          byte0010: 0
+          byte0011: 0
+          byte0012: 0
+          byte0013: 0
+          byte0014: 0
+          byte0015: 0
+        offset0016:
+          byte0000: 0
+          byte0001: 0
+          byte0002: 0
+          byte0003: 0
+          byte0004: 0
+          byte0005: 0
+          byte0006: 0
+          byte0007: 0
+          byte0008: 0
+          byte0009: 0
+          byte0010: 0
+          byte0011: 0
+          byte0012: 0
+          byte0013: 0
+          byte0014: 0
+          byte0015: 0
+        offset0032:
+          byte0000: 0
+          byte0001: 0
+          byte0002: 0
+          byte0003: 0
+          byte0004: 0
+          byte0005: 0
+          byte0006: 0
+          byte0007: 0
+          byte0008: 0
+          byte0009: 0
+          byte0010: 0
+          byte0011: 0
+          byte0012: 0
+          byte0013: 0
+          byte0014: 0
+          byte0015: 0
+        byte0048: 0
+        byte0049: 0
+        byte0050: 0
+        byte0051: 0
+        byte0052: 0
+        byte0053: 0
+        byte0054: 0
+        byte0055: 0
+        byte0056: 0
+        byte0057: 0
+        byte0058: 0
+        byte0059: 0
+        byte0060: 0
+        byte0061: 0
+  _name: {fileID: 7090521677987813561}
+--- !u!114 &6529045357356197352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3568251145842437014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b45337d04f5a44f489546b1ca918ab16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensitivity: 15
+  _cam: {fileID: 4647905610783583819}
+  _lockX: 0
+  _lockY: 0
+  CanMoveCamera:
+    m_InternalValue: 0
 --- !u!1 &4437466165826359393
 GameObject:
   m_ObjectHideFlags: 0
