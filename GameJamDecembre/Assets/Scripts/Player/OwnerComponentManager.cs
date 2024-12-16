@@ -12,6 +12,7 @@ public class OwnerComponentManager : NetworkBehaviour
     [SerializeField] 
     private GameObject _panel;
 
+
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
