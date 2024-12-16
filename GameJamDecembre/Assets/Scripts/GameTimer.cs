@@ -5,12 +5,23 @@ using UnityEngine;
 
 public class GameTimer : MonoBehaviour
 {
-    public float Timer { get; private set; }
-    private Dictionary<PhaseEnum, Delegate> gr;
-     
-    public void LaunchTimer(float time)
+    public float Timer;
+
+    [SerializeField] private float _debateTime;
+    [SerializeField] private float _voteTime;
+
+    public void LaunchTimer(PhaseEnum whichPhase)
     {
-        Timer = time;
+        switch (whichPhase)
+        {
+            case PhaseEnum.Debate:
+                Timer = _debateTime;
+                break;
+
+            case PhaseEnum.Vote:
+                Timer = _voteTime;
+                break;
+        }
     }
 
     private void Update()
