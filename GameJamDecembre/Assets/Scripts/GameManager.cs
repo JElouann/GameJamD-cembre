@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     // event to move to vote phase ()
     public event Action OnChronoOver;
 
+    private GameTimer _gameTimer;
+
     // Singleton
     #region Singleton
     private static GameManager _instance;
@@ -45,13 +47,31 @@ public class GameManager : MonoBehaviour
             _instance = this;
             Debug.Log($"<b><color=#{UnityEngine.Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f, 1f, 1f).ToHexString()}>{this.GetType()}</color> instance <color=#58ed7d>created</color></b>");
         }
+        #endregion
+        // end Awake
+        _gameTimer = GetComponent<GameTimer>();
     }
-    #endregion
+
+
+    private void Start()
+    {
+        OnAllLawEntered += MoveToDebatePhase;
+        OnChronoOver += MoveToVotePhase;
+    }
+
+    private void Initialize()
+    {
+        // assign the number of player
+    }
 
     public void MoveToDebatePhase()
     {
         if (!HasEveryPlayerEnteredALaw()) return;
-        OnAllLawEntered.Invoke();
+    }
+
+    public void MoveToVotePhase()
+    {
+        if (_gameTimer.Timer > 0) return;
     }
 
     private bool HasEveryPlayerEnteredALaw()
