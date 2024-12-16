@@ -38,8 +38,12 @@ public class InputLoi : NetworkBehaviour
         if (!IsOwner) { return; } // ALL players will read this method, only player owner will execute past this line
         _playerControl.CanMove.Value = true;
         _playerMouseControl.CanMoveCamera.Value = true;
+
         _valueLaws.Value = _loiText.text;
+
+
         _newLaws.text = _valueLaws.Value.ToString();
+
         _panelLaws.SetActive(false);
         _canTakeTablette.Value = true;
     }

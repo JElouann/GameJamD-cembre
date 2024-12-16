@@ -80,5 +80,10 @@ public class GameManager : MonoBehaviour
     {
         return (Laws.Count <= 0 && Laws.Count < NumberOfPlayer);
     }
+
+    private void UpdateScreen()
+    {
+        
+    }
 }
  
