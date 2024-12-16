@@ -1938,7 +1938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 15
-  playerBody: {fileID: 5650342543430258571}
+  _cam: {fileID: 0}
   CanMoveCamera:
     m_InternalValue: 0
 --- !u!114 &5604820214662519356
@@ -1955,7 +1955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 276442996759282604}
   _mainPanel: {fileID: 601359231026339795}
-  _panel: {fileID: 8637463705266141611}
+  _panel: {fileID: 3063013951943665707}
 --- !u!114 &238131750836902059
 MonoBehaviour:
   m_ObjectHideFlags: 0
