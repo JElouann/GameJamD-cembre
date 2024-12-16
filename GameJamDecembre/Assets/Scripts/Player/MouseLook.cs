@@ -12,6 +12,9 @@ public class MouseLook : MonoBehaviour
     private float xRotation = 0f;
     private float yRotation = 0f;
 
+    [SerializeField] private bool _lockX;
+    [SerializeField] private bool _lockY;
+
     public NetworkVariable<bool> CanMoveCamera = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
     public void OnMouseLookPerformed(InputAction.CallbackContext context)
@@ -37,15 +40,12 @@ public class MouseLook : MonoBehaviour
         float mouseX = mouseDelta.x * sensitivity * Time.deltaTime;
         float mouseY = mouseDelta.y * sensitivity * Time.deltaTime;
 
-        xRotation -= mouseY;
+        if (!_lockX) xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Limite pour éviter de regarder "à l'envers"
-        yRotation += mouseX;
+        if (!_lockY) yRotation += mouseX;
         //cam
         _cam.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
         //player
-        transform.rotation = Quaternion.Euler(0, yRotation, 0f);
-
-
-        //playerBody.Rotate(new Vector3(mouseX, mouseY, 0));
+        //transform.rotation = Quaternion.Euler(0, yRotation, 0f);
     }
 }

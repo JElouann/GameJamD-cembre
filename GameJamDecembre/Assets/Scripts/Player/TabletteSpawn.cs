@@ -11,7 +11,7 @@ public class TabletteSpawn : NetworkBehaviour
     [SerializeField]
     private GameObject _canvasTablette;
 
-    [SerializeField] 
+    [SerializeField]
     private MouseLook _playerMouseControl;
 
     [SerializeField]
