@@ -10,8 +10,10 @@ public class GameManager : MonoBehaviour
     // list that contains every law
     public List<string> Laws = new();
 
-    // event to move to debate phase ()
-    public event Action OnAllLawEntered;
+    // TODO : liste de portes
+
+    // event to move to debate phase (if conditions) (proc when player enter law)
+    public event Action OnLawEntered;
 
     // event to move to vote phase ()
     public event Action OnChronoOver;
@@ -55,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        OnAllLawEntered += MoveToDebatePhase;
+        OnLawEntered += MoveToDebatePhase;
         OnChronoOver += MoveToVotePhase;
     }
 
@@ -79,3 +81,4 @@ public class GameManager : MonoBehaviour
         return (Laws.Count <= 0 && Laws.Count < NumberOfPlayer);
     }
 }
+ 
