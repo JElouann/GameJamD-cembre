@@ -1202,28 +1202,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1049903557
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148996865170}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3390558720134950976, guid: ccf85b7b45fc32749b4acf47a4ccb7be, type: 3}
 --- !u!1 &1089343648
 GameObject:
   m_ObjectHideFlags: 0
@@ -2931,7 +2909,7 @@ GameObject:
   - component: {fileID: 543450652650055208}
   - component: {fileID: 3469287836633934221}
   - component: {fileID: 1711813856062790983}
-  - component: {fileID: 1049903557}
+  - component: {fileID: 3469287836633934222}
   m_Layer: 0
   m_Name: Senate_blockin
   m_TagString: Untagged
@@ -2988,6 +2966,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148996865170}
+  m_Mesh: {fileID: 3390558720134950976, guid: ccf85b7b45fc32749b4acf47a4ccb7be, type: 3}
+--- !u!64 &3469287836633934222
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148996865170}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 3390558720134950976, guid: ccf85b7b45fc32749b4acf47a4ccb7be, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
