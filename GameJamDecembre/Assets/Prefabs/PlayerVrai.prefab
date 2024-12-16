@@ -2006,7 +2006,7 @@ MonoBehaviour:
   _rb: {fileID: 3352787456140336684}
   CanMove:
     m_InternalValue: 0
-  cameraTransform: {fileID: 710457864426110814}
+  cameraTransform: {fileID: 5650342543430258571}
 --- !u!114 &6716374130770954639
 MonoBehaviour:
   m_ObjectHideFlags: 0

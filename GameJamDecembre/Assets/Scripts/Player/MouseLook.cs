@@ -28,8 +28,8 @@ public class MouseLook : MonoBehaviour
 
     private void Start()
     {
-        xRotation = transform.rotation.x;
-        yRotation = transform.rotation.y;
+        xRotation = _cam.transform.rotation.x;
+        yRotation = _cam.transform.rotation.y;
     }
 
     private void Update()
@@ -46,12 +46,24 @@ public class MouseLook : MonoBehaviour
         float mouseX = mouseDelta.x * sensitivity * Time.deltaTime;
         float mouseY = mouseDelta.y * sensitivity * Time.deltaTime;
 
-        if (!_lockX) xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Limite pour éviter de regarder "à l'envers"
+        if (!_lockX)
+        {
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Limite pour éviter de regarder "à l'envers"
+        }
+        else
+        {
+            xRotation = -90;
+        }
+
+        //if (!_lockX) xRotation -= mouseY;
         if (!_lockY) yRotation += mouseX;
+
         //cam
         _cam.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
         //player
         //transform.rotation = Quaternion.Euler(0, yRotation, 0f);
+
+        print($"cam: {this.gameObject}, rot x : {xRotation}, rot y : {yRotation}");
     }
 }
