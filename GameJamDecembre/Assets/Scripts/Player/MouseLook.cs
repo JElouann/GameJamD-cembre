@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class MouseLook : MonoBehaviour
 {
     public float sensitivity = 40;
-    public Transform playerBody; // Le Transform du joueur (pour la rotation Yaw)
+    public Transform _cam; // Le Transform du joueur (pour la rotation Yaw)
 
     private Vector2 mouseDelta;
 
@@ -40,7 +40,11 @@ public class MouseLook : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Limite pour éviter de regarder "à l'envers"
         yRotation += mouseX;
-        playerBody.rotation = Quaternion.Euler(0, yRotation, 0f);
+        //cam
+        _cam.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
+        //player
+        transform.rotation = Quaternion.Euler(0, yRotation, 0f);
+
 
         //playerBody.Rotate(new Vector3(mouseX, mouseY, 0));
     }
