@@ -1,46 +1,21 @@
-//using System.Globalization;
-//using Unity.Netcode;
-//using UnityEngine;
-//using UnityEngine.InputSystem;
-
-
-//public class MouseLook : NetworkBehaviour
-//{
-//    [SerializeField] float _turnSpeed;
-//    [SerializeField] Vector2 _lookDelta;
-//    [SerializeField] GameObject _camera;
-//    [SerializeField] GameObject _player;
-
-//    public void OnLook(InputAction.CallbackContext callbackContext)
-//    {
-//        _lookDelta = callbackContext.ReadValue<Vector2>();
-//    }
-
-//    private void Update()
-//    {
-//        if (!IsOwner) { return; }
-
-//        if (_camera != null && _player != null)
-//        {
-//            _camera.transform.rotation = Quaternion.Euler(_turnSpeed * Time.deltaTime * new Vector3(_camera.transform.rotation.x, Mathf.Clamp(_camera.transform.rotation.y + _lookDelta.y, 0, 360), _camera.transform.rotation.z));
-//            //_player.transform.rotation = Quaternion.Euler(_turnSpeed * Time.deltaTime * new Vector3(_player.transform.rotation.x + _lookDelta.x, _player.transform.rotation.y, _player.transform.rotation.z));
-//            print($"somme rot : {Mathf.Clamp(_camera.transform.rotation.y + _lookDelta.y, 0, 360)}, rot camera : {_camera.transform.rotation.y}, delta : {_lookDelta.y}");
-//        }
-//    }
-//}
-
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class MouseLook : MonoBehaviour
 {
-    public float sensitivity = 40;
-    public Transform playerBody; // Le Transform du joueur (pour la rotation Yaw)
+    public float sensitivity = 15;
+    public Transform _cam; // Le Transform du joueur (pour la rotation Yaw)
 
     private Vector2 mouseDelta;
 
     private float xRotation = 0f;
     private float yRotation = 0f;
+
+    [SerializeField] private bool _lockX;
+    [SerializeField] private bool _lockY;
+
+    public NetworkVariable<bool> CanMoveCamera = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
     public void OnMouseLookPerformed(InputAction.CallbackContext context)
     {
@@ -53,7 +28,10 @@ public class MouseLook : MonoBehaviour
 
     private void Update()
     {
-        RotateView();
+        if (CanMoveCamera.Value)
+        {
+            RotateView();
+        }
     }
 
     private void RotateView()
@@ -62,11 +40,14 @@ public class MouseLook : MonoBehaviour
         float mouseX = mouseDelta.x * sensitivity * Time.deltaTime;
         float mouseY = mouseDelta.y * sensitivity * Time.deltaTime;
 
+        //if (!_lockX)
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Limite pour éviter de regarder "à l'envers"
+        //if (!_lockY) 
         yRotation += mouseX;
+        //cam
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
-
-        //playerBody.Rotate(new Vector3(mouseX, mouseY, 0));
+        //player
+        //_cam.rotation = Quaternion.Euler(0, yRotation, 0f);
     }
 }
