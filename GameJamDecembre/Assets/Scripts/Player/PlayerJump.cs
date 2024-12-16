@@ -18,6 +18,7 @@ public class PlayerJump : NetworkBehaviour
     public void JumpAction()
     {
         if (!IsOwner) { return; }
-        _rb.AddForce(Vector3.up * 5);
+        Debug.Log("vdvfefefzsdfef");
+        _rb.AddForce(Vector3.up * 500);
     }
 }
