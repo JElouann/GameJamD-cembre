@@ -1938,7 +1938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 15
-  playerBody: {fileID: 710457864426110814}
+  playerBody: {fileID: 5650342543430258571}
   CanMoveCamera:
     m_InternalValue: 0
 --- !u!114 &5604820214662519356
