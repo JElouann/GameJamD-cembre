@@ -9,8 +9,8 @@ public class MouseLook : MonoBehaviour
 
     private Vector2 mouseDelta;
 
-    private float xRotation = 0f;
-    private float yRotation = 0f;
+    private float xRotation;
+    private float yRotation;
 
     [SerializeField] private bool _lockX;
     [SerializeField] private bool _lockY;
@@ -24,6 +24,12 @@ public class MouseLook : MonoBehaviour
         {
             mouseDelta = Vector2.zero;
         }
+    }
+
+    private void Start()
+    {
+        xRotation = transform.rotation.x;
+        yRotation = transform.rotation.y;
     }
 
     private void Update()
