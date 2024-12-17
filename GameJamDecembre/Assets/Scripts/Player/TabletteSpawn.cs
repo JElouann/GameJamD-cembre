@@ -23,6 +23,15 @@ public class TabletteSpawn : NetworkBehaviour
     [SerializeField]
     private NetworkVariable<bool> _panelOpen = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
+    [SerializeField]
+    private GameObject _panelVote;
+
+    [SerializeField]
+    private GameObject _panelWait;
+
+    [SerializeField]
+    private NetworkVariable<bool> _panelVoteOpen = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+
     public void OnTabletteSpawn(InputAction.CallbackContext context)
     {
         if (!IsOwner) { return; } // ALL players will read this method, only player owner will execute past this line
@@ -45,6 +54,24 @@ public class TabletteSpawn : NetworkBehaviour
                     _canvasTablette.SetActive(false);
                 }
             }
+        }
+    }
+
+    //On change de vision pour la tablette
+    public void ChangeScreenTablette()
+    {
+        if (!IsOwner) { return;}
+        if (_panelVoteOpen.Value)
+        {
+            _panelVoteOpen.Value = false;
+            _panelVote.SetActive(false);
+            _panelWait.SetActive(true);
+        }
+        else
+        {
+            _panelVoteOpen.Value = true;
+            _panelVote.SetActive(true);
+            _panelWait.SetActive(false);
         }
     }
 }

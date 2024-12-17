@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class InputLoi : NetworkBehaviour
 {
-    private NetworkVariable<FixedString64Bytes> _valueLaws = new NetworkVariable<FixedString64Bytes>("test", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    public NetworkVariable<FixedString64Bytes> _valueLaws = new NetworkVariable<FixedString64Bytes>("test", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
     [SerializeField]
     private TextMeshProUGUI _loiText;
 
-    [SerializeField]
-    private TextMeshProUGUI _newLaws;
+
+    public TextMeshProUGUI _newLaws;
 
     [SerializeField]
     private GameObject _panelLaws;
@@ -59,5 +59,7 @@ public class InputLoi : NetworkBehaviour
 
         _panelLaws.SetActive(false);
         _canTakeTablette.Value = true;
+
+        GameManager.Instance.Initialize();
     }
 }

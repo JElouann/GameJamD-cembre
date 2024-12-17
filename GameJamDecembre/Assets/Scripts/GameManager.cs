@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using TMPro;
 using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -23,9 +24,17 @@ public class GameManager : NetworkBehaviour
     private GameTimer _gameTimer;
     public List<Transform> SpawnPoints;
 
+    [SerializeField]
+    private List<string> _playerLoi = new();
+
+    [SerializeField]
+    private TextMeshProUGUI _textLoi;
+
     public NetworkVariable<int> PlayerCount = new();
     public override void OnNetworkSpawn()
     {
+        base.OnNetworkSpawn();
+
         if (IsHost)
         {
             NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnectedCallback;
@@ -62,6 +71,7 @@ public class GameManager : NetworkBehaviour
 
     private void Awake()
     {
+        _playerLoi.Clear();
         if (_instance != null)
         {
             Destroy(this.gameObject);
@@ -79,34 +89,54 @@ public class GameManager : NetworkBehaviour
 
     private void Start()
     {
-        OnLawEntered += MoveToDebatePhase;
+        //OnLawEntered += MoveToDebatePhase;
         OnChronoOver += MoveToVotePhase;
     }
 
     #region AGAGAGAGA
-    private void Initialize()
+    public void Initialize()
     {
-        // assign the number of player
+        //Peut être problème car build renvoit r
+        Debug.Log("test2");
+        var players = PlayerManager.GetConnectedPlayers();
+        foreach (var player in players)
+        {
+            _playerLoi.Add(NetworkManager.Singleton.ConnectedClients[player.Key].PlayerObject.gameObject.GetComponent<InputLoi>()._valueLaws.Value.ToString()); //Ajoute les lois de chaque joueur
+        }
+        MoveToDebatePhase(0);
     }
 
-    public void MoveToDebatePhase()
+    public async void MoveToDebatePhase(int indexLoi)
     {
-        if (!HasEveryPlayerEnteredALaw()) return;
+        if (!(_playerLoi.Count > indexLoi))
+        {
+            MoveToVotePhase(); //Tout le monde est passé, on vote
+        }
+        else
+        {
+            _textLoi.text = _playerLoi[indexLoi].ToString(); //Affichage de la loi
+            await Task.Delay(5000); //Temporaire
+            indexLoi++;
+            MoveToDebatePhase(indexLoi); //On relance le débat pour la loi suivante
+        }
+
+        //if (!HasEveryPlayerEnteredALaw()) return;
     }
 
     public void MoveToVotePhase()
     {
-        if (_gameTimer.Timer > 0) return;
+        var players = PlayerManager.GetConnectedPlayers();
+        foreach (var player in players)
+        {
+            NetworkManager.Singleton.ConnectedClients[player.Key].PlayerObject.gameObject.GetComponent<TabletteSpawn>().ChangeScreenTablette();//chaque player ouvre son vote
+        }
+        //timer puis changement de thème
+        //if (_gameTimer.Timer > 0) return;
     }
 
     private bool HasEveryPlayerEnteredALaw()
     {
         return (Laws.Count <= 0 && Laws.Count < NumberOfPlayer);
-    }
-
-    private void UpdateScreen()
-    {
-        // update the world pos canva
     }
     #endregion
 
