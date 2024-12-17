@@ -38,7 +38,12 @@ public class PlayerController : MonoBehaviour
 
             // Calculate movement direction relative to the camera
             Vector3 movement = (forward * _movement.y + right * _movement.x) * _speed * Time.fixedDeltaTime;
-            _rb.MovePosition(_rb.position + movement);
+
+            if ((_rb != null) && CanMove.Value)
+            {
+                Vector3 monCulDerrièreLaGare = movement * _speed;
+                _rb.velocity = new Vector3(monCulDerrièreLaGare.x, _rb.velocity.y, monCulDerrièreLaGare.z);
+            }
         }
     }
 }
