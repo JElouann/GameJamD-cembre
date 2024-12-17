@@ -87,9 +87,16 @@ public class GameManager : MonoBehaviour
         // update the world pos canva
     }
 
-    public void AddPlayerToDico(string playerName)
+    public int AddPlayerToDico(string playerName)
     {
-        //if (IdDictionary.ContainsValue(playerName)) 
+        int key = 666;
+        foreach (KeyValuePair<int, string> item in IdDictionary)
+        {
+            if (item.Value != null) break; 
+            key = item.Key;
+        }
+        return key;
+            //if (IdDictionary.ContainsValue(playerName))
     }
 }
 
