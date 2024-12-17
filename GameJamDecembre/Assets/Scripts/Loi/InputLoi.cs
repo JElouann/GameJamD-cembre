@@ -41,7 +41,7 @@ public class InputLoi : NetworkBehaviour
 
         _valueLaws.Value = _loiText.text;
 
-
+        GameManager.Instance.Laws.Add(new PlayerLaw(5, "g"));
         _newLaws.text = _valueLaws.Value.ToString();
 
         _panelLaws.SetActive(false);

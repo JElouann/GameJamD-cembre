@@ -677,7 +677,7 @@ MonoBehaviour:
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6529045357356197352}
+      - m_Target: {fileID: 5836406599794453970}
         m_TargetAssemblyTypeName: MouseLook, Assembly-CSharp
         m_MethodName: OnMouseLookPerformed
         m_Mode: 0
@@ -912,6 +912,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3852893062168636226}
+  - component: {fileID: 2813488637087595566}
   - component: {fileID: 5210554138915872400}
   - component: {fileID: 128237424632530627}
   m_Layer: 0
@@ -929,13 +930,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195711180420670211}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 200, y: 200, z: 200}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 710457864426110814}
-  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &2813488637087595566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195711180420670211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 256dcec0b303d0049bca90fa4a99b94a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensitivity: 15
+  _cam: {fileID: 5197837858072761363}
+  _lockX: 0
+  _lockY: 0
 --- !u!33 &5210554138915872400
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1482,6 +1499,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5650342543430258571}
+  - component: {fileID: 5836406599794453970}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -1498,15 +1516,35 @@ Transform:
   m_GameObject: {fileID: 3063013951943665707}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2.93, z: 0.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4647905610783583819}
   - {fileID: 4730083989784198171}
   - {fileID: 7724580961341677627}
+  - {fileID: 5197837858072761363}
   m_Father: {fileID: 710457864426110814}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5836406599794453970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3063013951943665707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b45337d04f5a44f489546b1ca918ab16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensitivity: 15
+  Head: {fileID: 5650342543430258571}
+  Body: {fileID: 0}
+  _lockX: 0
+  _lockY: 0
+  CanMoveCamera:
+    m_InternalValue: 0
 --- !u!1 &3216333764394008035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1845,7 +1883,6 @@ GameObject:
   - component: {fileID: 1143362490721298883}
   - component: {fileID: 6229755430417156175}
   - component: {fileID: 567519673896058599}
-  - component: {fileID: 6529045357356197352}
   m_Layer: 0
   m_Name: PlayerVrai
   m_TagString: Untagged
@@ -1992,7 +2029,7 @@ MonoBehaviour:
   _newLaws: {fileID: 126179722465059845}
   _panelLaws: {fileID: 8637463705266141611}
   _playerControl: {fileID: 238131750836902059}
-  _playerMouseControl: {fileID: 6529045357356197352}
+  _playerMouseControl: {fileID: 5836406599794453970}
   _canTakeTablette:
     m_InternalValue: 0
 --- !u!114 &2216217096419258617
@@ -2051,7 +2088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasTablette: {fileID: 5698486777656335333}
-  _playerMouseControl: {fileID: 6529045357356197352}
+  _playerMouseControl: {fileID: 0}
   _playerControl: {fileID: 238131750836902059}
   _inputLoiRef: {fileID: 6716374130770954639}
   _panelOpen:
@@ -2151,24 +2188,6 @@ MonoBehaviour:
         byte0060: 0
         byte0061: 0
   _name: {fileID: 7090521677987813561}
---- !u!114 &6529045357356197352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3568251145842437014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b45337d04f5a44f489546b1ca918ab16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sensitivity: 15
-  _cam: {fileID: 4647905610783583819}
-  _lockX: 0
-  _lockY: 0
-  CanMoveCamera:
-    m_InternalValue: 0
 --- !u!1 &4437466165826359393
 GameObject:
   m_ObjectHideFlags: 0
@@ -2895,6 +2914,37 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &5992640179020649997
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5197837858072761363}
+  m_Layer: 0
+  m_Name: target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5197837858072761363
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5992640179020649997}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.06}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5650342543430258571}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6253219997224682633
 GameObject:
   m_ObjectHideFlags: 0
@@ -4120,7 +4170,7 @@ Transform:
   m_GameObject: {fileID: 8853857905121717274}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.02, z: 0.353}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

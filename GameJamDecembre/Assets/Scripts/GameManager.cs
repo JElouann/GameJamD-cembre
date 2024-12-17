@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public int NumberOfPlayer;
 
     // list that contains every law
-    public List<string> Laws = new();
+    public List<PlayerLaw> Laws = new();
 
     // TODO : liste de portes
 
@@ -54,7 +54,6 @@ public class GameManager : MonoBehaviour
         _gameTimer = GetComponent<GameTimer>();
     }
 
-
     private void Start()
     {
         OnLawEntered += MoveToDebatePhase;
@@ -83,7 +82,19 @@ public class GameManager : MonoBehaviour
 
     private void UpdateScreen()
     {
-        
+        // update the world pos canva
+    }
+}
+
+public struct PlayerLaw
+{
+    public int PlayerID;
+    public string Law;
+
+    public PlayerLaw(int playerID, string law)
+    {
+        PlayerID = playerID;
+        Law = law;
     }
 }
  
