@@ -29,12 +29,13 @@ public class InputLoi : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
-        base.OnNetworkSpawn();
-        if (!IsOwner) { return; }
+        base.OnNetworkSpawn(); 
+        if (!IsOwner) return;
         _panelLaws.SetActive(true);
-
+        Transform zgeg = GameManager.Instance.SpawnPoints[Random.Range(0, GameManager.Instance.SpawnPoints.Count - 1)];
+        this.transform.position = zgeg.position;
+        this.transform.rotation = zgeg.rotation;
         // has to be in another script but MEH
-        GameManager.Instance.AddToPlayerDico("Petit étiopien");
     }
 
     public override void OnNetworkDespawn()
@@ -43,7 +44,6 @@ public class InputLoi : NetworkBehaviour
         if (!IsOwner) return;
 
         // has to be in another script but MEH
-        GameManager.Instance.RemoveFromPlayerDico();
     }
 
     public void SetLaws()

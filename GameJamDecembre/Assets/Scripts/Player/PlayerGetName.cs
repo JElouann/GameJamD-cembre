@@ -25,7 +25,7 @@ public class PlayerGetName : NetworkBehaviour
         _name.text = _nameToString.Value.ToString();
         ListRandomPseudo.Instance.PseudoInitial.RemoveAt(0);
 
-        GameObject _newPrefab = Instantiate(_prefabForTablette);
-        _newPrefab.GetComponent<InputLoi>();
+        //GameObject _newPrefab = Instantiate(_prefabForTablette);
+        //_newPrefab.GetComponent<InputLoi>();
     }
 }

@@ -21,7 +21,7 @@ public class GameManager : NetworkBehaviour
     public event Action OnChronoOver;
 
     private GameTimer _gameTimer;
-    [SerializeField] private List<Transform> _spawnPoints;
+    public List<Transform> SpawnPoints;
 
     public NetworkVariable<int> PlayerCount = new();
     public override void OnNetworkSpawn()
@@ -123,4 +123,3 @@ public struct PlayerLaw
         Law = law;
     }
 }
- 
