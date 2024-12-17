@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
 
     private GameTimer _gameTimer;
 
+    public Dictionary<int, string> IdDictionary;
+
     // Singleton
     #region Singleton
     private static GameManager _instance;
@@ -83,6 +85,11 @@ public class GameManager : MonoBehaviour
     private void UpdateScreen()
     {
         // update the world pos canva
+    }
+
+    public void AddPlayerToDico(string playerName)
+    {
+        if (IdDictionary.ContainsValue(playerName)) return;
     }
 }
 

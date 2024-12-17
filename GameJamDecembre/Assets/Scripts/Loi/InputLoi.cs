@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class InputLoi : NetworkBehaviour
 {
-    //[SerializeField]
     private NetworkVariable<FixedString64Bytes> _valueLaws = new NetworkVariable<FixedString64Bytes>("test", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
     [SerializeField]
@@ -31,6 +30,18 @@ public class InputLoi : NetworkBehaviour
         base.OnNetworkSpawn();
         if (!IsOwner) { return; }
         _panelLaws.SetActive(true);
+
+        // has to be in another script but MEH
+        GameManager.Instance.
+    }
+
+    public override void OnNetworkDespawn()
+    {
+        base.OnNetworkDespawn();
+        if (!IsOwner) return;
+
+        // has to be in another script but MEH
+        GameManager.Instance.
     }
 
     public void SetLaws()
