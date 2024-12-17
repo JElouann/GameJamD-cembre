@@ -32,7 +32,7 @@ public class InputLoi : NetworkBehaviour
         _panelLaws.SetActive(true);
 
         // has to be in another script but MEH
-        GameManager.Instance.
+        //GameManager.Instance.
     }
 
     public override void OnNetworkDespawn()
@@ -41,7 +41,7 @@ public class InputLoi : NetworkBehaviour
         if (!IsOwner) return;
 
         // has to be in another script but MEH
-        GameManager.Instance.
+        //GameManager.Instance.
     }
 
     public void SetLaws()

@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
 
     public void AddPlayerToDico(string playerName)
     {
-        if (IdDictionary.ContainsValue(playerName)) return;
+        //if (IdDictionary.ContainsValue(playerName)) 
     }
 }
 
