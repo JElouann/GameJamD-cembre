@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : NetworkBehaviour
 {
     public int NumberOfPlayer;
 
@@ -19,8 +21,27 @@ public class GameManager : MonoBehaviour
     public event Action OnChronoOver;
 
     private GameTimer _gameTimer;
+    [SerializeField] private List<Transform> _spawnPoints;
 
-    public Dictionary<int, string> IdDictionary;
+    public NetworkVariable<int> PlayerCount = new();
+    public override void OnNetworkSpawn()
+    {
+        if (IsHost)
+        {
+            NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnectedCallback;
+            NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnectCallback;
+        }
+    }
+
+    private void OnClientDisconnectCallback(ulong obj)
+    {
+        PlayerCount.Value--;
+    }
+
+    private void OnClientConnectedCallback(ulong obj)
+    {
+        PlayerCount.Value++;
+    }
 
     // Singleton
     #region Singleton
@@ -62,6 +83,7 @@ public class GameManager : MonoBehaviour
         OnChronoOver += MoveToVotePhase;
     }
 
+    #region AGAGAGAGA
     private void Initialize()
     {
         // assign the number of player
@@ -86,18 +108,8 @@ public class GameManager : MonoBehaviour
     {
         // update the world pos canva
     }
+    #endregion
 
-    public int AddPlayerToDico(string playerName)
-    {
-        int key = 666;
-        foreach (KeyValuePair<int, string> item in IdDictionary)
-        {
-            if (item.Value != null) break; 
-            key = item.Key;
-        }
-        return key;
-            //if (IdDictionary.ContainsValue(playerName))
-    }
 }
 
 public struct PlayerLaw

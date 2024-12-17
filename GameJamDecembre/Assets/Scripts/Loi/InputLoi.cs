@@ -25,6 +25,8 @@ public class InputLoi : NetworkBehaviour
     [SerializeField]
     public NetworkVariable<bool> _canTakeTablette = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
+    public NetworkVariable<int> PlayerID;
+
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
@@ -32,7 +34,7 @@ public class InputLoi : NetworkBehaviour
         _panelLaws.SetActive(true);
 
         // has to be in another script but MEH
-        //GameManager.Instance.
+        GameManager.Instance.AddToPlayerDico("Petit étiopien");
     }
 
     public override void OnNetworkDespawn()
@@ -41,7 +43,7 @@ public class InputLoi : NetworkBehaviour
         if (!IsOwner) return;
 
         // has to be in another script but MEH
-        //GameManager.Instance.
+        GameManager.Instance.RemoveFromPlayerDico();
     }
 
     public void SetLaws()
