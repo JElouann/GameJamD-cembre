@@ -9,10 +9,7 @@ public class PlayerManager : NetworkBehaviour
 
     public static PlayerManager _instance;
 
-
     //Il faut penser au déconection si polish
-
-
 
     private void Awake()
     {
@@ -21,7 +18,6 @@ public class PlayerManager : NetworkBehaviour
 
     public void OnClientConnected(ulong clientId)
     {
-        Debug.Log("Nouveau joueur enregistré avec succès !");
         AddPlayer(clientId, $"Player_{clientId}");
     }
 

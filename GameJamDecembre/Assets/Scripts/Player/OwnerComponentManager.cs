@@ -20,6 +20,10 @@ public class OwnerComponentManager : NetworkBehaviour
         _camera.enabled = true; // only enable YOUR PLAYER'S camera, all others will stay disabled
         _mainPanel.SetActive(true);
         _panel.SetActive(true);
+        if (IsHost)
+        {
+            gameObject.transform.position = new Vector3(0,5000,0);
+        }
 
         PlayerManager._instance.OnClientConnected(NetworkManager.Singleton.LocalClientId); ///balance l'ID du joueur
     }
