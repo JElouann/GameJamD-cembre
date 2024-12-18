@@ -19,6 +19,7 @@ public class ColliderTresVicieuse : NetworkBehaviour
 
     [SerializeField] private TextMeshProUGUI _loiEnCours;
 
+
     /// <summary>
     /// Trigger très coquin qui pirate les données du joueur
     /// </summary>
@@ -29,10 +30,13 @@ public class ColliderTresVicieuse : NetworkBehaviour
         {
             if (other.gameObject.layer == 7) //Si c'est un player
             {
-                DownloadId(other.gameObject.GetComponent<OwnerComponentManager>().IdPlayer);
+                print(other.gameObject);
+                print(other.gameObject.GetComponent<OwnerComponentManager>());
                 print(other.gameObject.GetComponent<OwnerComponentManager>().IdPlayer);
+                DownloadId(other.gameObject.GetComponent<OwnerComponentManager>().IdPlayer);
             }
         }
+
     }
 
     private void OnTriggerExit(Collider other)
@@ -54,12 +58,10 @@ public class ColliderTresVicieuse : NetworkBehaviour
             if (_idPotential == _id) //Si je l'ai déjà enregistré
             {
                 AfficheLoiPlayer(_idPotential);
-                return;
             }
         }
         _idPlayersInGame.Add(_idPotential); //On enregister l'id du joueur car on ne le connaît pas
         AfficheLoiPlayer(_idPotential);
-        print(_idPotential);
     }
 
     /// <summary>
