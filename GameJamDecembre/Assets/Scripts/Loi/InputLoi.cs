@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class InputLoi : NetworkBehaviour
 {
-    private NetworkVariable<FixedString64Bytes> _valueLaws = new NetworkVariable<FixedString64Bytes>("test", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    public NetworkVariable<FixedString64Bytes> ValueLaws = new NetworkVariable<FixedString64Bytes>("test", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
     [SerializeField]
     private TextMeshProUGUI _loiText;
@@ -52,10 +52,10 @@ public class InputLoi : NetworkBehaviour
         _playerControl.CanMove.Value = true;
         _playerMouseControl.CanMoveCamera.Value = true;
 
-        _valueLaws.Value = _loiText.text;
+        ValueLaws.Value = _loiText.text;
 
         //GameManager.Instance.Laws.Add(new PlayerLaw(5, "g"));
-        _newLaws.text = _valueLaws.Value.ToString();
+        _newLaws.text = ValueLaws.Value.ToString();
 
         _panelLaws.SetActive(false);
         _canTakeTablette.Value = true;

@@ -1799,7 +1799,7 @@ GameObject:
   - component: {fileID: 6229755430417156175}
   - component: {fileID: 567519673896058599}
   - component: {fileID: 6529045357356197352}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerVrai
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1822,6 +1822,7 @@ Transform:
   - {fileID: 3852893062168636226}
   - {fileID: 5650342543430258571}
   - {fileID: 383186209523035203}
+  - {fileID: 5409813166227275544}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &5466962702173704810
@@ -1910,6 +1911,7 @@ MonoBehaviour:
   _camera: {fileID: 276442996759282604}
   _mainPanel: {fileID: 601359231026339795}
   _panel: {fileID: 3063013951943665707}
+  IdPlayer: 0
 --- !u!114 &6716374130770954639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1922,12 +1924,83 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae0fdc48e929fb47b7dfb2d5e9a0476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ValueLaws:
+    m_InternalValue:
+      utf8LengthInBytes: 4
+      bytes:
+        offset0000:
+          byte0000: 116
+          byte0001: 101
+          byte0002: 115
+          byte0003: 116
+          byte0004: 0
+          byte0005: 0
+          byte0006: 0
+          byte0007: 0
+          byte0008: 0
+          byte0009: 0
+          byte0010: 0
+          byte0011: 0
+          byte0012: 0
+          byte0013: 0
+          byte0014: 0
+          byte0015: 0
+        offset0016:
+          byte0000: 0
+          byte0001: 0
+          byte0002: 0
+          byte0003: 0
+          byte0004: 0
+          byte0005: 0
+          byte0006: 0
+          byte0007: 0
+          byte0008: 0
+          byte0009: 0
+          byte0010: 0
+          byte0011: 0
+          byte0012: 0
+          byte0013: 0
+          byte0014: 0
+          byte0015: 0
+        offset0032:
+          byte0000: 0
+          byte0001: 0
+          byte0002: 0
+          byte0003: 0
+          byte0004: 0
+          byte0005: 0
+          byte0006: 0
+          byte0007: 0
+          byte0008: 0
+          byte0009: 0
+          byte0010: 0
+          byte0011: 0
+          byte0012: 0
+          byte0013: 0
+          byte0014: 0
+          byte0015: 0
+        byte0048: 0
+        byte0049: 0
+        byte0050: 0
+        byte0051: 0
+        byte0052: 0
+        byte0053: 0
+        byte0054: 0
+        byte0055: 0
+        byte0056: 0
+        byte0057: 0
+        byte0058: 0
+        byte0059: 0
+        byte0060: 0
+        byte0061: 0
   _loiText: {fileID: 5253935965053538811}
   _newLaws: {fileID: 126179722465059845}
   _panelLaws: {fileID: 8637463705266141611}
   _playerControl: {fileID: 3431613538653657017}
   _playerMouseControl: {fileID: 6529045357356197352}
   _canTakeTablette:
+    m_InternalValue: 0
+  PlayerID:
     m_InternalValue: 0
 --- !u!114 &2216217096419258617
 MonoBehaviour:
@@ -2003,6 +2076,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 3352787456140336684}
+  _groundLayer1:
+    serializedVersion: 2
+    m_Bits: 64
+  _groundCheck: {fileID: 5409813166227275544}
 --- !u!114 &567519673896058599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2206,6 +2283,37 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &4628504973972064329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5409813166227275544}
+  m_Layer: 0
+  m_Name: ForJump
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5409813166227275544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4628504973972064329}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 710457864426110814}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5242582296193928664
 GameObject:
   m_ObjectHideFlags: 0
