@@ -12,8 +12,6 @@ public class MouseLook : MonoBehaviour
     private float xRotation = 0f;
     private float yRotation = 0f;
 
-    public NetworkVariable<bool> CanMoveCamera = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-
     public void OnMouseLookPerformed(InputAction.CallbackContext context)
     {
         mouseDelta = context.ReadValue<Vector2>();
@@ -25,10 +23,7 @@ public class MouseLook : MonoBehaviour
 
     private void Update()
     {
-        if (CanMoveCamera.Value)
-        {
-            RotateView();
-        }
+        RotateView();
     }
 
     private void RotateView()
