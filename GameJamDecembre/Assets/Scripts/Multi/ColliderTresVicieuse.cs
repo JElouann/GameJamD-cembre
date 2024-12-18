@@ -26,13 +26,17 @@ public class ColliderTresVicieuse : NetworkBehaviour
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 7) //Si c'est un player
+        if (IsOwner)
         {
-            print(other.gameObject);
-            print(other.gameObject.GetComponent<OwnerComponentManager>());
-            print(other.gameObject.GetComponent<OwnerComponentManager>().IdPlayer);
-            DownloadId(other.gameObject.GetComponent<OwnerComponentManager>().IdPlayer);
+            if (other.gameObject.layer == 7) //Si c'est un player
+            {
+                print(other.gameObject);
+                print(other.gameObject.GetComponent<OwnerComponentManager>());
+                print(other.gameObject.GetComponent<OwnerComponentManager>().IdPlayer);
+                DownloadId(other.gameObject.GetComponent<OwnerComponentManager>().IdPlayer);
+            }
         }
+
     }
 
     private void OnTriggerExit(Collider other)
