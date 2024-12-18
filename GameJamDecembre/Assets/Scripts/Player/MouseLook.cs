@@ -21,6 +21,7 @@ public class MouseLook : MonoBehaviour
         {
             mouseDelta = Vector2.zero;
         }
+
     }
 
     private void Update()
