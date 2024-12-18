@@ -12,6 +12,8 @@ public class OwnerComponentManager : NetworkBehaviour
     [SerializeField] 
     private GameObject _panel;
 
+    public ulong _idPlayer;
+
 
     public override void OnNetworkSpawn()
     {
@@ -20,9 +22,12 @@ public class OwnerComponentManager : NetworkBehaviour
         _camera.enabled = true; // only enable YOUR PLAYER'S camera, all others will stay disabled
         _mainPanel.SetActive(true);
         _panel.SetActive(true);
+
+        _idPlayer = NetworkManager.Singleton.LocalClientId;
+
         if (IsHost)
         {
-            gameObject.transform.position = new Vector3(0,5000,0);
+            //gameObject.transform.position = new Vector3(0,5000,0);
         }
 
         //PlayerManager._instance.OnClientConnected(NetworkManager.Singleton.LocalClientId); ///balance l'ID du joueur

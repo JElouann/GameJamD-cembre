@@ -98,12 +98,12 @@ public class GameManager : NetworkBehaviour
     {
         //Peut être problème car build renvoit r
         Debug.Log("test2");
-        var players = PlayerManager.GetConnectedPlayers();
-        foreach (var player in players)
-        {
-            _playerLoi.Add(NetworkManager.Singleton.ConnectedClients[player.Key].PlayerObject.gameObject.GetComponent<InputLoi>()._valueLaws.Value.ToString()); //Ajoute les lois de chaque joueur
-        }
-        MoveToDebatePhase(0);
+        //var players = PlayerManager.GetConnectedPlayers();
+        //foreach (var player in players)
+        //{
+        //    _playerLoi.Add(NetworkManager.Singleton.ConnectedClients[player.Key].PlayerObject.gameObject.GetComponent<InputLoi>()._valueLaws.Value.ToString()); //Ajoute les lois de chaque joueur
+        //}
+        //MoveToDebatePhase(0);
     }
 
     public async void MoveToDebatePhase(int indexLoi)
@@ -125,11 +125,11 @@ public class GameManager : NetworkBehaviour
 
     public void MoveToVotePhase()
     {
-        var players = PlayerManager.GetConnectedPlayers();
-        foreach (var player in players)
-        {
-            NetworkManager.Singleton.ConnectedClients[player.Key].PlayerObject.gameObject.GetComponent<TabletteSpawn>().ChangeScreenTablette();//chaque player ouvre son vote
-        }
+        //var players = PlayerManager.GetConnectedPlayers();
+        //foreach (var player in players)
+        //{
+        //    NetworkManager.Singleton.ConnectedClients[player.Key].PlayerObject.gameObject.GetComponent<TabletteSpawn>().ChangeScreenTablette();//chaque player ouvre son vote
+        //}
         //timer puis changement de thème
         //if (_gameTimer.Timer > 0) return;
     }

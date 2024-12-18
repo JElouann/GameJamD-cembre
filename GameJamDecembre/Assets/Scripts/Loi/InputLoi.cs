@@ -32,10 +32,10 @@ public class InputLoi : NetworkBehaviour
         base.OnNetworkSpawn(); 
         if (!IsOwner) return;
         _panelLaws.SetActive(true);
-        /*Transform zgeg = GameManager.Instance.SpawnPoints[Random.Range(0, GameManager.Instance.SpawnPoints.Count - 1)];
+        Transform zgeg = GameManager.Instance.SpawnPoints[Random.Range(0, GameManager.Instance.SpawnPoints.Count - 1)];
         this.transform.position = zgeg.position;
         this.transform.rotation = zgeg.rotation;
-        // has to be in another script but MEH*/
+        // has to be in another script but MEH
     }
 
     public override void OnNetworkDespawn()
