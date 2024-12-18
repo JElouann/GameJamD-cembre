@@ -59,7 +59,5 @@ public class InputLoi : NetworkBehaviour
 
         _panelLaws.SetActive(false);
         _canTakeTablette.Value = true;
-
-        GameManager.Instance.Initialize();
     }
 }
