@@ -25,6 +25,6 @@ public class OwnerComponentManager : NetworkBehaviour
             gameObject.transform.position = new Vector3(0,5000,0);
         }
 
-        PlayerManager._instance.OnClientConnected(NetworkManager.Singleton.LocalClientId); ///balance l'ID du joueur
+        //PlayerManager._instance.OnClientConnected(NetworkManager.Singleton.LocalClientId); ///balance l'ID du joueur
     }
 }
