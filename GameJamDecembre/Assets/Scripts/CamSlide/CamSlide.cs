@@ -16,6 +16,15 @@ public class CamSlide : MonoBehaviour
     private Negociation _negociation;
 
     [SerializeField]
+    private AudioSource _audioSource;
+
+    [SerializeField]
+    private AudioClip _audioClip;
+
+    [SerializeField]
+    private AudioClip _audioClip2;
+
+    [SerializeField]
     private bool _finish;
 
     public List<bool> _playerVote = new List<bool>();
@@ -29,6 +38,8 @@ public class CamSlide : MonoBehaviour
 
     public async void CamSlideForVote()
     {
+        _audioSource.clip = _audioClip;
+        _audioSource.Play();
         _negociation.CanNegociation = false;
         _negociation.NombreDePointMax = 0;
         _playerVote.Clear();
@@ -68,6 +79,8 @@ public class CamSlide : MonoBehaviour
         _canvas.SetActive(true);
         _finish = true;
         await Task.Delay(1000);
+        _audioSource.clip = _audioClip;
+        _audioSource.Play();
         ScoreManager.Instance.AddPuntos();
     }
 
