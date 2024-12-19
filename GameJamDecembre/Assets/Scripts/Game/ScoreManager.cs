@@ -18,7 +18,7 @@ public class ScoreManager : MonoBehaviour
     private int _scoreMinistre = 0;
 
     public static Dictionary<string, int> PartyScores = new() { { "EG", 2 }, { "G", 0 }, { "C", 5 }, { "D", 0 }, { "ED", 1 } };
-    private static Dictionary<string, TextMeshProUGUI> _partiScoreText = new();
+    public static Dictionary<string, TextMeshProUGUI> _partiScoreText = new();
 
     public static ScoreManager Instance;
 

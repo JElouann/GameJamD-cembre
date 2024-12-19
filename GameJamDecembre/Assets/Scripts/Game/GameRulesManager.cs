@@ -50,7 +50,7 @@ public class GameRuleManager : MonoBehaviour
             int randomIndex = Random.Range(0, _cibleLoi.Count);
             RandomLaw = _cibleLoi[randomIndex];
 
-            _lawDisplayText.text = $"Loi tirée : {RandomLaw.Law}\n";
+            _lawDisplayText.text = $"Loi tiree : {RandomLaw.Law}\n";
             _lawDisplayText.text += $"{RandomLaw.Parti1}: {RandomLaw.Points1} points\n";
             _lawDisplayText.text += $"{RandomLaw.Parti2}: {RandomLaw.Points2} points\n";
             _lawDisplayText.text += $"{RandomLaw.Parti3}: {RandomLaw.Points3} points\n";
