@@ -2342,6 +2342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 2865248395936077339}
+  _mainPanel: {fileID: 0}
   _panel: {fileID: 1686877391917202223}
 --- !u!114 &1222781300468362935
 MonoBehaviour:
@@ -2358,6 +2359,8 @@ MonoBehaviour:
   _speed: 30
   _movement: {x: 0, y: 0}
   _rb: {fileID: 5103632464805245372}
+  CanMove:
+    m_InternalValue: 0
   cameraTransform: {fileID: 485053114091730464}
 --- !u!114 &4343491017282479003
 MonoBehaviour:
@@ -2372,7 +2375,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 20
-  playerBody: {fileID: 8768279791139783625}
+  _cam: {fileID: 0}
+  _lockX: 0
+  _lockY: 0
+  CanMoveCamera:
+    m_InternalValue: 0
 --- !u!114 &7731368992860423659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2501,9 +2508,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &339984498845135907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2531,6 +2538,10 @@ MonoBehaviour:
   _loiText: {fileID: 1977450941985092713}
   _newLaws: {fileID: 9018923187545475549}
   _panelLaws: {fileID: 1686877391917202223}
+  _playerControl: {fileID: 0}
+  _playerMouseControl: {fileID: 0}
+  _canTakeTablette:
+    m_InternalValue: 0
 --- !u!1 &5828315117610587149
 GameObject:
   m_ObjectHideFlags: 0
