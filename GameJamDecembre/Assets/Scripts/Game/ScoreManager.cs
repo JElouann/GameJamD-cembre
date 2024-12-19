@@ -17,7 +17,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private int _scoreMinistre = 0;
 
-    public static Dictionary<string, int> PartyScores = new() { { "EG", 2 }, { "G", 0 }, { "C", 5 }, { "D", 0 }, { "ED", 1 } };
+    // les différents partis + le premier ministre + WIN et LOS pour désigner les gagnants et les perdants + DEP pour désigner tous les députés + OSEF pour tu c quoi + AUTRES pour désigner tout ceux qui ne sont pas concernés
+    public static Dictionary<string, int> PartyScores = new() { { "EG", 0 }, { "G", 0 }, { "C", 0 }, { "D", 0 }, { "ED", 0 }, { "PM", 0 }, { "WIN", 0 }, { "LOS", 0 }, { "DEP", 0 }, { "OSEF", 0 }, { "AUTRES", 0} };
     public static Dictionary<string, TextMeshProUGUI> _partiScoreText = new();
 
     public static ScoreManager Instance;
@@ -67,7 +68,11 @@ public class ScoreManager : MonoBehaviour
         if (_nombreDeVoixPour >= 3)
         {
             CibleLoi cibleLoi = GameRuleManager.RandomLaw;
-
+            if (cibleLoi.IsSpecial)
+            {
+                SpecialPuntos();
+                return;
+            }
             PartyScores[cibleLoi.Parti1] += cibleLoi.Points1;
             PartyScores[cibleLoi.Parti2] += cibleLoi.Points2;
             PartyScores[cibleLoi.Parti3] += cibleLoi.Points3;
@@ -86,6 +91,10 @@ public class ScoreManager : MonoBehaviour
 
     }
 
+    private void SpecialPuntos()
+    {
+
+    }
 
     public void RemovePuntos()
     {

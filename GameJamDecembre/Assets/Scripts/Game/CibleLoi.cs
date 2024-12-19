@@ -9,8 +9,10 @@ public class CibleLoi
     public int Points2;
     public string Parti3;
     public int Points3;
+    public string Parti4;
+    public int Points4;
 
-    public CibleLoi(bool isSpecial, string law, string parti1, int points1, string parti2, int points2, string parti3, int points3)
+    public CibleLoi(bool isSpecial, string law, string parti1, int points1, string parti2, int points2, string parti3, int points3, string parti4, int points4)
     {
         IsSpecial = isSpecial;
         Law = law;
@@ -20,5 +22,7 @@ public class CibleLoi
         Points2 = points2;
         Parti3 = parti3;
         Points3 = points3;
+        Parti4 = parti4;
+        Points4 = points4;
     }
 }
