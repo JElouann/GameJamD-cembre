@@ -20,6 +20,12 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private Button _buttonLaw2;
 
+    [SerializeField]
+    private TextMeshProUGUI _premierMinistre;
+
+    [SerializeField]
+    private int _scoreMinistre = 0;
+
     private int _currentIndexOfPlayer = 0;
 
     private static Dictionary<string, int> _partyScores = new() { { "EG", 0 }, { "G", 0 }, { "C", 0 }, { "D", 0 }, { "ED", 0 } };
@@ -61,5 +67,15 @@ public class ScoreManager : MonoBehaviour
         _partiScoreText[cibleLoi.Parti1].text = _partyScores[cibleLoi.Parti1].ToString();
         _partiScoreText[cibleLoi.Parti2].text = _partyScores[cibleLoi.Parti2].ToString();
         _partiScoreText[cibleLoi.Parti3].text = _partyScores[cibleLoi.Parti3].ToString();
-    } 
+
+        _scoreMinistre += 3;
+        _premierMinistre.text = _scoreMinistre.ToString();
+    }
+
+
+    public void RemovePuntos()
+    {
+        _scoreMinistre -= 1;
+        _premierMinistre.text = _scoreMinistre.ToString();
+    }
 }
