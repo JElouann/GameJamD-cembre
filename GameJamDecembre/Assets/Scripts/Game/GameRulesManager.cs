@@ -15,6 +15,8 @@ public class GameRuleManager : MonoBehaviour
     [SerializeField]
     private Button _randomLawButton;
 
+    public static CibleLoi RandomLaw;
+
     void Start()
     {
         //ajout des lois
@@ -46,14 +48,14 @@ public class GameRuleManager : MonoBehaviour
         if (_cibleLoi.Count > 0)
         {
             int randomIndex = Random.Range(0, _cibleLoi.Count);
-            CibleLoi randomLaw = _cibleLoi[randomIndex];
+            RandomLaw = _cibleLoi[randomIndex];
 
-            _lawDisplayText.text = $"Loi tirée : {randomLaw.Law}\n";
-            _lawDisplayText.text += $"{randomLaw.Parti1}: {randomLaw.Points1} points\n";
-            _lawDisplayText.text += $"{randomLaw.Parti2}: {randomLaw.Points2} points\n";
-            _lawDisplayText.text += $"{randomLaw.Parti3}: {randomLaw.Points3} points\n";
+            _lawDisplayText.text = $"Loi tirée : {RandomLaw.Law}\n";
+            _lawDisplayText.text += $"{RandomLaw.Parti1}: {RandomLaw.Points1} points\n";
+            _lawDisplayText.text += $"{RandomLaw.Parti2}: {RandomLaw.Points2} points\n";
+            _lawDisplayText.text += $"{RandomLaw.Parti3}: {RandomLaw.Points3} points\n";
 
-            _cibleLoi.Remove(randomLaw);
+            _cibleLoi.Remove(RandomLaw);
         }
         else
         {
