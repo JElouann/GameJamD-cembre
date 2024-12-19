@@ -40,8 +40,6 @@ public class GameRuleManager : MonoBehaviour
 
         // ajout des lois un peu particulière jpp
 
-        AddLoi(true, "Salaire XXL pour le PM.", "PM", 5, "DEP", -1, "PM", -3, "DEP", 1);
-        AddLoi(true, "Budget du PM : on ferme les yeux.", "PM", 4, "DEP", -1, "PM", -2, "DEP", 1);
         AddLoi(true, "Prime pour faire semblant de bosser.", "DEP", 3, "PM", -2, "DEP", -1, "PM", 2);
         AddLoi(true, "Cumul de mandats : youpi !", "DEP", 2, "PM", -3, "DEP", -1, "PM", 1);
         AddLoi(true, "Aides pour les losers.", "LOS", 4, "AUTRES", -1, "OSEF", 0, "OSEF", 0);

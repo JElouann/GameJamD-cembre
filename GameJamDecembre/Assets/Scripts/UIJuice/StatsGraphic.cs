@@ -59,11 +59,11 @@ public class StatsGraphic : MonoBehaviour
     {
         float total = ScoreManager.PartyScores["EG"] + ScoreManager.PartyScores["G"] + ScoreManager.PartyScores["C"] + ScoreManager.PartyScores["D"] + ScoreManager.PartyScores["ED"];
 
-        float proportion1 = ScoreManager.PartyScores["EG"] / total;
-        float proportion2 = ScoreManager.PartyScores["G"] / total;
-        float proportion3 = ScoreManager.PartyScores["C"] / total;
-        float proportion4 = ScoreManager.PartyScores["D"] / total;
-        float proportion5 = ScoreManager.PartyScores["ED"] / total;
+        float proportion1 = Mathf.Clamp(ScoreManager.PartyScores["EG"] / total, 0, 9999);
+        float proportion2 = Mathf.Clamp(ScoreManager.PartyScores["G"] / total, 0, 9999);
+        float proportion3 = Mathf.Clamp(ScoreManager.PartyScores["C"] / total, 0, 9999);
+        float proportion4 = Mathf.Clamp(ScoreManager.PartyScores["D"] / total, 0, 9999);
+        float proportion5 = Mathf.Clamp(ScoreManager.PartyScores["ED"] / total, 0, 9999);
 
         #region Cimetière
         //float currentRot = 0;
