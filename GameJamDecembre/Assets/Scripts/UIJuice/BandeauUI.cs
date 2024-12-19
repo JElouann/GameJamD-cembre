@@ -43,7 +43,7 @@ public class BandeauUI : MonoBehaviour
         }
     }
     #endregion
-
+        
     public void ShowText(string content)
     {
         _text.text = content;
