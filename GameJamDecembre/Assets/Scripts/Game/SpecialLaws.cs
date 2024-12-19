@@ -33,7 +33,7 @@ public class SpecialLaws : MonoBehaviour
 
     public void AddLoi(string law, string cible1, int points1, string cible2, int points2, string cible3, int points3)
     {
-        CibleLoi newCible = new CibleLoi(law, cible1, points1, cible2, points2, cible3, points3);
+        //CibleLoi newCible = new CibleLoi(law, cible1, points1, cible2, points2, cible3, points3);
         //_specialRules.Add(newCible);
     }
 }
