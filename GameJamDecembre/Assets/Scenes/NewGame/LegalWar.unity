@@ -898,9 +898,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c1adf9f3918a4c42829f5f8b9c150ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 128
+  CanNegociation: 0
+  NombreDePointMax: 0
 --- !u!4 &319056515
 Transform:
   m_ObjectHideFlags: 0
@@ -4749,6 +4748,7 @@ MonoBehaviour:
   - {fileID: 1998495953}
   - {fileID: 2047372780}
   _canvas: {fileID: 1319504847}
+  _negociation: {fileID: 319056514}
   _finish: 0
   _playerVote: 
 --- !u!4 &1912991640
@@ -4966,6 +4966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c9c067a5b65be42bab49ae760e4851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _negociation: {fileID: 319056514}
   _cibleLoi: []
   _lawDisplayText: {fileID: 1961941525}
   _randomLawButton: {fileID: 567881970}

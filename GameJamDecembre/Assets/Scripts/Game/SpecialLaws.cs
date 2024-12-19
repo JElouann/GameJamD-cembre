@@ -1,23 +1,15 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class GameRuleManager : MonoBehaviour
+public class SpecialLaws : MonoBehaviour
 {
     [SerializeField]
-    private Negociation _negociation;
+    private Dictionary<string, int> _dicoSpecialLaws = new();
 
     [SerializeField]
-    private List<CibleLoi> _cibleLoi = new List<CibleLoi>();
-
-    [SerializeField]
-    private TMP_Text _lawDisplayText;
-
-    [SerializeField]
-    private Button _randomLawButton;
-
-    public static CibleLoi RandomLaw;
+    private List<GamesRules> _specialRules = new List<GamesRules>();
 
     void Start()
     {
@@ -42,31 +34,6 @@ public class GameRuleManager : MonoBehaviour
     public void AddLoi(string law, string cible1, int points1, string cible2, int points2, string cible3, int points3)
     {
         CibleLoi newCible = new CibleLoi(law, cible1, points1, cible2, points2, cible3, points3);
-        _cibleLoi.Add(newCible);
-    }
-
-    public void TirerLoiAleatoire()
-    {
-        if (_cibleLoi.Count > 0)
-        {
-            _negociation.CanNegociation = true;
-            int randomIndex = Random.Range(0, _cibleLoi.Count);
-            RandomLaw = _cibleLoi[randomIndex];
-
-            _lawDisplayText.text = $"Loi tiree : {RandomLaw.Law}\n";
-            _lawDisplayText.text += $"{RandomLaw.Parti1}: {RandomLaw.Points1} points\n";
-            _lawDisplayText.text += $"{RandomLaw.Parti2}: {RandomLaw.Points2} points\n";
-            _lawDisplayText.text += $"{RandomLaw.Parti3}: {RandomLaw.Points3} points\n";
-
-            _cibleLoi.Remove(RandomLaw);
-            // afficher sur le bandeau la nouvelle loi
-            BandeauUI.Instance.ShowText("Nouvelle loi : " + RandomLaw.Law);
-        }
-        else
-        {
-            _lawDisplayText.text = "Aucune loi disponible.";
-            // afficher sur le bandeau le manque de loi
-            BandeauUI.Instance.ShowText("Plus de propositions de lois disponibles.");
-        }
+        //_specialRules.Add(newCible);
     }
 }
