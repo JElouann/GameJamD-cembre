@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,9 +13,46 @@ public class StatsGraphic : MonoBehaviour
     [SerializeField] private Image _party4;
     [SerializeField] private Image _party5;
 
+    // Singleton
+    #region Singleton
+    private static StatsGraphic _instance;
+
+    public static StatsGraphic Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                GameObject go = new GameObject("je sers à faire des graphiques");
+                _instance = go.AddComponent<StatsGraphic>();
+            }
+            return _instance;
+        }
+    }
+
+    private void Awake()
+    {
+        if (_instance != null)
+        {
+            Destroy(this.gameObject);
+            Debug.Log($"<b><color=#{UnityEngine.Random.ColorHSV(0f, 1f, 1f, 1f, 0f, 0f, 1f, 1f).ToHexString()}>{this.GetType()}</color> instance <color=#eb624d>destroyed</color></b>");
+        }
+        else
+        {
+            _instance = this;
+            Debug.Log($"<b><color=#{UnityEngine.Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f, 1f, 1f).ToHexString()}>{this.GetType()}</color> instance <color=#58ed7d>created</color></b>");
+        }
+    }
+    #endregion
+
     private void Start()
     {
-        UpdateGraphics();    
+        //UpdateGraphics();
+        _party1.DOFillAmount(0, 0.5f);
+        _party2.DOFillAmount(0, 0.5f);
+        _party3.DOFillAmount(0, 0.5f);
+        _party4.DOFillAmount(0, 0.5f);
+        _party5.DOFillAmount(0, 0.5f);
     }
 
     public void UpdateGraphics()
@@ -22,10 +60,10 @@ public class StatsGraphic : MonoBehaviour
         float total = ScoreManager.PartyScores["EG"] + ScoreManager.PartyScores["G"] + ScoreManager.PartyScores["C"] + ScoreManager.PartyScores["D"] + ScoreManager.PartyScores["ED"];
 
         float proportion1 = ScoreManager.PartyScores["EG"] / total;
-        float proportion2 = (ScoreManager.PartyScores["G"] == 0) ? 0 : proportion1 + ScoreManager.PartyScores["G"] / total;
-        float proportion3 = (ScoreManager.PartyScores["C"] == 0) ? 0 : proportion2 + ScoreManager.PartyScores["C"] / total;
-        float proportion4 = (ScoreManager.PartyScores["D"] == 0) ? 0 : proportion3 + ScoreManager.PartyScores["D"] / total;
-        float proportion5 = (ScoreManager.PartyScores["ED"] == 0) ? 0 : proportion4 + ScoreManager.PartyScores["ED"] / total;
+        float proportion2 = ScoreManager.PartyScores["G"] / total;
+        float proportion3 = ScoreManager.PartyScores["C"] / total;
+        float proportion4 = ScoreManager.PartyScores["D"] / total;
+        float proportion5 = ScoreManager.PartyScores["ED"] / total;
 
         #region Cimetière
         //float currentRot = 0;

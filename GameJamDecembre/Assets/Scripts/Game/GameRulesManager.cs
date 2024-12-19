@@ -43,13 +43,13 @@ public class GameRuleManager : MonoBehaviour
         AddLoi(true, "Salaire XXL pour le PM.", "PM", 5, "DEP", -1, "PM", -3, "DEP", 1);
         AddLoi(true, "Budget du PM : on ferme les yeux.", "PM", 4, "DEP", -1, "PM", -2, "DEP", 1);
         AddLoi(true, "Prime pour faire semblant de bosser.", "DEP", 3, "PM", -2, "DEP", -1, "PM", 2);
-        //    AddLoi(true, "Cumul de mandats : youpi !", "DEP", 2, "PM", -3, "DEP", -1);
-        //    AddLoi(true, "Aides pour les loosers.", "LOS", 4, "G", 2, "C", 1);
-        //    AddLoi(true, "Relance des loosers éternels.", "EG", 4, "G", 2, "C", 1);
-        //    AddLoi(true, "Subventions pour vos galères.", "EG", 4, "G", 2, "C", 1);
-        //    AddLoi(true, "Taxe sur les mecs blindés.", "EG", 4, "G", 2, "C", 1);
-        //    AddLoi(true, "Redistribution (mais pas trop).", "EG", 4, "G", 2, "C", 1);
-        //    AddLoi(true, "On coupe les privilèges.", "EG", 4, "G", 2, "C", 1);
+        AddLoi(true, "Cumul de mandats : youpi !", "DEP", 2, "PM", -3, "DEP", -1, "PM", 1);
+        AddLoi(true, "Aides pour les losers.", "LOS", 4, "AUTRES", -1, "OSEF", 0, "OSEF", 0);
+        AddLoi(true, "Relance des losers éternels.", "LOS", 3, "AUTRES", 1, "OSEF", 0, "OSEF", 0);
+        AddLoi(true, "Subventions pour vos galères.", "LOS", 5, "OSEF", 0, "OSEF", 0, "OSEF", 0);
+        AddLoi(true, "Taxe sur les mecs blindés.", "WIN", -4, "AUTRES", 1, "OSEF", 0, "OSEF", 0);
+        AddLoi(true, "Redistribution (mais pas trop).", "WIN", -3, "LOS", 3, "OSEF", 0, "OSEF", 0);
+        AddLoi(true, "On coupe les privilèges.", "WIN", -5, "OSEF", 0, "OSEF", 0, "OSEF", 0);
     }
 
     public void AddLoi(bool IsSpecial, string law, string cible1, int points1, string cible2, int points2, string cible3, int points3, string cible4, int points4)
