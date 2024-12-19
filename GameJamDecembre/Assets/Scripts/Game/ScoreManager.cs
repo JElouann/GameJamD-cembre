@@ -6,30 +6,26 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField]
-    private TMP_InputField _inputField;
-
-    [SerializeField]
     private List<TextMeshProUGUI> _textMeshProList = new();
-
-    [SerializeField]
-    private Button _button;
-
-    [SerializeField]
-    private Button _buttonLaw1;
-
-    [SerializeField]
-    private Button _buttonLaw2;
 
     [SerializeField]
     private TextMeshProUGUI _premierMinistre;
 
     [SerializeField]
-    private int _scoreMinistre = 0;
+    private int _nombreDeVoixPour;
 
-    private int _currentIndexOfPlayer = 0;
+    [SerializeField]
+    private int _scoreMinistre = 0;
 
     private static Dictionary<string, int> _partyScores = new() { { "EG", 0 }, { "G", 0 }, { "C", 0 }, { "D", 0 }, { "ED", 0 } };
     private static Dictionary<string, TextMeshProUGUI> _partiScoreText = new();
+
+    public static ScoreManager Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     /*public void RenamePlayer()
     {
@@ -58,18 +54,36 @@ public class ScoreManager : MonoBehaviour
 
     public void AddPuntos()
     {
-        CibleLoi cibleLoi = GameRuleManager.RandomLaw;
+        _nombreDeVoixPour = 0;
 
-        _partyScores[cibleLoi.Parti1] += cibleLoi.Points1;
-        _partyScores[cibleLoi.Parti2] += cibleLoi.Points2;
-        _partyScores[cibleLoi.Parti3] += cibleLoi.Points3;
+        foreach (bool vote in CamSlide.Instance._playerVote)
+        {
+            if (vote)
+            {
+                _nombreDeVoixPour++;
+            }
+        }
 
-        _partiScoreText[cibleLoi.Parti1].text = _partyScores[cibleLoi.Parti1].ToString();
-        _partiScoreText[cibleLoi.Parti2].text = _partyScores[cibleLoi.Parti2].ToString();
-        _partiScoreText[cibleLoi.Parti3].text = _partyScores[cibleLoi.Parti3].ToString();
+        if (_nombreDeVoixPour >= 3)
+        {
+            CibleLoi cibleLoi = GameRuleManager.RandomLaw;
 
-        _scoreMinistre += 3;
-        _premierMinistre.text = _scoreMinistre.ToString();
+            _partyScores[cibleLoi.Parti1] += cibleLoi.Points1;
+            _partyScores[cibleLoi.Parti2] += cibleLoi.Points2;
+            _partyScores[cibleLoi.Parti3] += cibleLoi.Points3;
+
+            _partiScoreText[cibleLoi.Parti1].text = _partyScores[cibleLoi.Parti1].ToString();
+            _partiScoreText[cibleLoi.Parti2].text = _partyScores[cibleLoi.Parti2].ToString();
+            _partiScoreText[cibleLoi.Parti3].text = _partyScores[cibleLoi.Parti3].ToString();
+
+            _scoreMinistre += 3;
+            _premierMinistre.text = _scoreMinistre.ToString();
+        }
+        else
+        {
+            RemovePuntos();
+        }
+
     }
 
 
