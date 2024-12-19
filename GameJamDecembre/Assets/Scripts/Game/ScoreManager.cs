@@ -17,8 +17,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private int _scoreMinistre = 0;
 
-    private static Dictionary<string, int> _partyScores = new() { { "EG", 0 }, { "G", 0 }, { "C", 0 }, { "D", 0 }, { "ED", 0 } };
-    private static Dictionary<string, TextMeshProUGUI> _partiScoreText = new();
+    public static Dictionary<string, int> PartyScores = new() { { "EG", 2 }, { "G", 0 }, { "C", 5 }, { "D", 0 }, { "ED", 1 } };
+    public static Dictionary<string, TextMeshProUGUI> _partiScoreText = new();
 
     public static ScoreManager Instance;
 
@@ -68,13 +68,13 @@ public class ScoreManager : MonoBehaviour
         {
             CibleLoi cibleLoi = GameRuleManager.RandomLaw;
 
-            _partyScores[cibleLoi.Parti1] += cibleLoi.Points1;
-            _partyScores[cibleLoi.Parti2] += cibleLoi.Points2;
-            _partyScores[cibleLoi.Parti3] += cibleLoi.Points3;
+            PartyScores[cibleLoi.Parti1] += cibleLoi.Points1;
+            PartyScores[cibleLoi.Parti2] += cibleLoi.Points2;
+            PartyScores[cibleLoi.Parti3] += cibleLoi.Points3;
 
-            _partiScoreText[cibleLoi.Parti1].text = _partyScores[cibleLoi.Parti1].ToString();
-            _partiScoreText[cibleLoi.Parti2].text = _partyScores[cibleLoi.Parti2].ToString();
-            _partiScoreText[cibleLoi.Parti3].text = _partyScores[cibleLoi.Parti3].ToString();
+            _partiScoreText[cibleLoi.Parti1].text = PartyScores[cibleLoi.Parti1].ToString();
+            _partiScoreText[cibleLoi.Parti2].text = PartyScores[cibleLoi.Parti2].ToString();
+            _partiScoreText[cibleLoi.Parti3].text = PartyScores[cibleLoi.Parti3].ToString();
 
             _scoreMinistre += 3;
             _premierMinistre.text = _scoreMinistre.ToString();

@@ -13,6 +13,9 @@ public class CamSlide : MonoBehaviour
     private GameObject _canvas;
 
     [SerializeField]
+    private Negociation _negociation;
+
+    [SerializeField]
     private bool _finish;
 
     public List<bool> _playerVote = new List<bool>();
@@ -26,6 +29,8 @@ public class CamSlide : MonoBehaviour
 
     public async void CamSlideForVote()
     {
+        _negociation.CanNegociation = false;
+        _negociation.NombreDePointMax = 0;
         _playerVote.Clear();
         _finish = false;
         _canvas.SetActive(false);
