@@ -7,6 +7,11 @@ using System.Linq;
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField]
+    private LePetitMouvementDuHautVersLeBasPourLUI totalemenasaplacesisi;
+    [SerializeField]
+    private LePetitMouvementDuHautVersLeBasPourLUI keskesafoulaptin;
+
+    [SerializeField]
     private List<TextMeshProUGUI> _textMeshProList = new();
 
     [SerializeField]
@@ -22,7 +27,7 @@ public class ScoreManager : MonoBehaviour
     public static Dictionary<string, int> PartyScores = new() { { "EG", 0 }, { "G", 0 }, { "C", 0 }, { "D", 0 }, { "ED", 0 }, { "PM", 0 }, { "WIN", 0 }, { "LOS", 0 }, { "DEP", 0 }, { "OSEF", 0 }, { "AUTRES", 0 } };
     public static Dictionary<string, TextMeshProUGUI> _partiScoreText = new();
 
-    private List<string> _toIgnore = new() { "WIN", "LOS", "DEP", "OSEF", "AUTRES"};
+    private List<string> _toIgnore = new() { "WIN", "LOS", "DEP", "OSEF", "AUTRES" };
 
     public static ScoreManager Instance;
 
@@ -59,6 +64,9 @@ public class ScoreManager : MonoBehaviour
 
     public void AddPuntos()
     {
+        if (keskesafoulaptin.IsOut) keskesafoulaptin.MoveUp();
+        if (totalemenasaplacesisi) totalemenasaplacesisi.MoveUp();
+        if (GameRuleManager.Instance.LeDelaiDeLaMortQuiTueEtNeRespecteMemePasLesConventionsTellementIlEstPuissantAuMoinsAutantQueUnCoupDBouleDePhillipeEtchebest >= 10) GameRuleManager.Instance.GIGASHUTDOWNARMAGGEDON();
         _nombreDeVoixPour = 0;
 
         foreach (bool vote in CamSlide.Instance._playerVote)
@@ -107,7 +115,7 @@ public class ScoreManager : MonoBehaviour
     {
         List<string> party = new();
         List<int> puntos = new();
-        List<string> lesAutres = new() { "EG", "G", "C", "D", "ED", "PM"};
+        List<string> lesAutres = new() { "EG", "G", "C", "D", "ED", "PM" };
 
         if (isAccepted)
         {
@@ -132,15 +140,15 @@ public class ScoreManager : MonoBehaviour
                     break; // osef 
 
                 case "PM":
-                    Mathf.Clamp(_scoreMinistre += puntos[i], 0, 9999);
+                    _scoreMinistre += puntos[i];
                     _premierMinistre.text = _scoreMinistre.ToString();
                     lesAutres.Remove("PM");
                     break;
 
                 case "WIN":
-                    foreach(string key in GetWinners())
+                    foreach (string key in GetWinners())
                     {
-                        Mathf.Clamp(PartyScores[key] += puntos[i], 0, 9999);
+                        PartyScores[key] += puntos[i];
                         _partiScoreText[key].text = PartyScores[key].ToString();
                         lesAutres.Remove(key);
                         print($"{key} : {puntos[i]}");
@@ -150,7 +158,7 @@ public class ScoreManager : MonoBehaviour
                 case "LOS":
                     foreach (string key in GetLosers())
                     {
-                        Mathf.Clamp(PartyScores[key] += puntos[i], 0, 9999); ;
+                        PartyScores[key] += puntos[i];
                         lesAutres.Remove(key);
                         _partiScoreText[key].text = PartyScores[key].ToString();
                         print($"{key} : {puntos[i]}");
@@ -158,9 +166,9 @@ public class ScoreManager : MonoBehaviour
                     break;
 
                 case "DEP":
-                    foreach(string key in GetDeputesDuSenatDeLaRepubliqueDemocratique())
+                    foreach (string key in GetDeputesDuSenatDeLaRepubliqueDemocratique())
                     {
-                        Mathf.Clamp(PartyScores[key] += puntos[i], 0, 9999); ;
+                        PartyScores[key] += puntos[i];
                         lesAutres.Remove(key);
                         _partiScoreText[key].text = PartyScores[key].ToString();
                         print($"{key} : {puntos[i]}");
@@ -170,7 +178,7 @@ public class ScoreManager : MonoBehaviour
                 case "AUTRES":
                     foreach (string key in lesAutres)
                     {
-                        Mathf.Clamp(PartyScores[key] += puntos[i], 0, 9999); ;
+                        PartyScores[key] += puntos[i];
                         _partiScoreText[key].text = PartyScores[key].ToString();
                         print($"{key} : {puntos[i]}");
                     }
@@ -193,7 +201,7 @@ public class ScoreManager : MonoBehaviour
 
         foreach (KeyValuePair<string, int> item in PartyScores)
         {
-            if(item.Value >= PartyScores.Values.Max() && !_toIgnore.Contains(item.Key))
+            if (item.Value >= PartyScores.Values.Max() && !_toIgnore.Contains(item.Key))
             {
                 winningParties.Add(item.Key);
             }

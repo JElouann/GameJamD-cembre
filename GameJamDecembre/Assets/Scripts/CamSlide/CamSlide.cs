@@ -10,7 +10,7 @@ public class CamSlide : MonoBehaviour
     private List<CinemachineVirtualCamera> _slides = new List<CinemachineVirtualCamera>();
 
     [SerializeField]
-    private GameObject _canvas;
+    private List<GameObject> _gameObjectsToTurnOff;
 
     [SerializeField]
     private Negociation _negociation;
@@ -44,7 +44,12 @@ public class CamSlide : MonoBehaviour
         _negociation.NombreDePointMax = 0;
         _playerVote.Clear();
         _finish = false;
-        _canvas.SetActive(false);
+
+        foreach(GameObject gameObject in _gameObjectsToTurnOff)
+        {
+            gameObject.SetActive(false);
+        }
+
         _slides[0].enabled = true; //J1
 
         await Vote();
@@ -76,10 +81,15 @@ public class CamSlide : MonoBehaviour
 
         _slides[5].enabled = true; //PM
         _slides[4].enabled = false; //J5
-        _canvas.SetActive(true);
+
+        foreach (GameObject gameObject in _gameObjectsToTurnOff)
+        {
+            gameObject.SetActive(true);
+        }
+
         _finish = true;
         await Task.Delay(1000);
-        _audioSource.clip = _audioClip;
+        _audioSource.clip = _audioClip2;
         _audioSource.Play();
         ScoreManager.Instance.AddPuntos();
     }
